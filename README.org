@@ -24,7 +24,7 @@ at which point ~-><>~ returns said argument.
   expression with the first expression.  If no =<>= are found, behaves like
   ~->~.
 
-- =<>>= :: Behaves like ~<>>~.  Replaces all top-level =<>= inside the second
+- =<>>= :: Behaves like ~-<>>~.  Replaces all top-level =<>= inside the second
   expression with the first expression.  If no =<>= are found, behaves like
   ~->>~.
 
