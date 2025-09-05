@@ -1,0 +1,31 @@
+#+TITLE: cl-wand
+
+This system introduces a new macro called ~-><>~ (or "the wand").  By default it
+behaves as [[https://github.com/nightfly19/cl-arrows][cl-arrows]]' ~-<>~, but when it encounters a single symbol in its
+arguments (the "mode") it skips over it and changes behavior based on the
+symbol.
+
+~-><>~ acts recursively on its arguments in pairs of two: the "first expression"
+and the "second expression".  In each iteration the first expression pair is
+reduced to a single expression.  This repeats until a single argument remains,
+at which point ~-><>~ returns said argument.
+
+* Available modes
+
+- =>= :: Behaves like ~->~.  Inserts the previous expression as the second
+  element inside the second expression (if the second expression is a function,
+  this would be the first argument).  If the second expression is empty, it
+  inserts nonetheless.
+
+- =>>= :: Behaves like ~->>~.  Inserts the previous expression as the last
+  element inside the second expression.
+
+- =<>= :: Behaves like ~-<>~.  Replaces all top-level =<>= inside the second
+  expression with the first expression.  If no =<>= are found, behaves like
+  ~->~.
+
+- =<>>= :: Behaves like ~<>>~.  Replaces all top-level =<>= inside the second
+  expression with the first expression.  If no =<>= are found, behaves like
+  ~->>~.
+
+- When any other symbol is used, ~nil~ is returned.
