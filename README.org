@@ -29,3 +29,35 @@ at which point ~-><>~ returns said argument.
   ~->>~.
 
 - When any other symbol is used, ~nil~ is returned.
+
+* Examples
+
+/These are very contrived, but it's just for documentation's sake./
+
+Consider the following expression:
+
+#+begin_src lisp
+  (let* ((tmp (-> 34
+                  (+ 35)))
+         (tmp2 (->> tmp
+                    (princ-to-string)
+                    (concatenate 'string "34 plus 35 equals "))))
+    (-<>> tmp2
+         (format nil "Min: ~a, which is less than ~a" <> "100")
+         (concatenate 'string <> "!~%")
+         (format t)))
+#+end_src
+
+This can be turned into:
+
+#+begin_src lisp
+  (-><> 34
+        (+ 35)
+        >>
+        (princ-to-string)
+        (concatenate 'string "34 plus 35 equals ")
+        <>>
+        (format nil "Min: ~a, which is less than ~a" <> "100")
+        (concatenate 'string <> "!~%")
+        (format t))
+#+end_src
