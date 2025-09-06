@@ -5,7 +5,8 @@
 (defvar *%available-modes%* '(> >> <> <>>))
 
 (defmacro -><> (initial-form &rest forms)
-  "Like -<>, but if any of >, >>, <>, or <>> are located inside FORMS, then the arrow changes behavior to match the symbol."
+  "Like -<>, but if any of >, >>, <>, or <>> are located inside FORMS,
+then the arrow changes behavior to match the symbol."
   `(-<?> <> ,initial-form ,@forms))
 
 (defmacro -<?> (mode initial-form &rest forms)
