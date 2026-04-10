@@ -1,6 +1,7 @@
 (defpackage #:cl-wand
   (:use #:cl)
   (:export #:-><>))
+(in-package :cl-wand)
 
 (defvar *%available-modes%* '(> >> <> <>>))
 
