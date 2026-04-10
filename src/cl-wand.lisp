@@ -3,15 +3,18 @@
   (:export #:-><>))
 (in-package :cl-wand)
 
-(defvar *modes* '(">" ">>" "<>" "<>>"))
+(defvar *modes* '(">" ">>" "<>" "<>>")
+  "Available wand modes.")
 
 (defun mode-p (thing)
+  "Check if THING is a wand mode."
   (if (and (symbolp thing)
            (member (symbol-name thing) *modes* :test #'equal))
       t
       nil))
 
 (defun mode= (a b)
+  "Check if A and B are the same wand mode."
   (when (and (mode-p a)
              (mode-p b))
     (string= (symbol-name a) (symbol-name b))))
